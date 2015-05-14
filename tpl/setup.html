@@ -1,0 +1,90 @@
+	
+<form id="setup" ng-controller="SetupCtl" ng-submit="Setup()">
+<div class="container">
+	<div class="row" ng-controller="ColorCtl">
+		<div class="col-md-4 lbl">Add some color:</div>
+		<div class="col-md-2"><a id="color" ng-click='Color("color")' >Foreground</a></div>
+		<div class="col-md-2"><a  id="background" ng-click='Color("background")' >Background</a></div>
+		<div class="col-md-3"></div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-4 lbl">Select your provider:</div>
+		<div class="col-md-8">
+			<select id="provider-ddl" class="txt" type=text list=providers>
+				   <option value="medstar-logo.jpg">Med Star Washington</option>
+				   <option value="logo-inova.gif">INOVA</option>
+				   <option value="gwhospital-logo.gif">George Washington University</option>
+				   <option value="sibley-logo.gif">Sibley Memorial Hospital</option>
+				   <option value="providence-hospital-logo.png">Providence Hospital</option>
+				   <option value="childrensnational-logo.png">Children's National Medical Center</option>
+				   <!-- <option id={{provider.id}} value={{provider.logo}}>{{provider.title}}</option> -->
+			</select>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4 lbl">Enter your email:</div>
+		<div class="col-md-8"><input type="text" id="email-txt" class="txt" ng-model="email"/></div>
+	</div>
+	<input in="color-hid" type="hidden" value="" ng-model="color"/>
+	<input in="background-hid" type="hidden" value="" ng-model="background"/>
+ 
+	<div class="row">
+		<div class="col-md-4 lbl">Your name:</div> 		
+		<div class="col-md-8">
+			<input class="txt" type="text" id="name-txt" maxlength="36" ng-model="pname" placeholder="Name:"  data-tip="Enter your name first last.">
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-4 lbl">Describe yourself:</div>		
+		<div class="col-md-8">
+			<input class="txt" type="text" id="desc-txt" ng-model="desc" placeholder="Ever so briefy, describe your self"  data-tip="Ever so briefy, describe your self">
+		</div>		
+	</div>
+ 	
+	<div class="row">
+		<div class="col-md-4 lbl">Stay Duration:</div> 		
+		<div class="col-md-2">
+			<input class="date" data-provide="datepicker" type="text" id="from-txt" ng-model="from" placeholder="From"  data-tip="Hospital stay from" data-date-format="M dd, yyyy"/>
+		</div>
+		<div class="col-md-2">
+			<input class="date" data-provide="datepicker" type="text" id="to-txt" ng-model="to" placeholder="To"  data-tip="Hospital stay to" data-date-format="M dd, yyyy"/>
+		</div>
+		<div class="col-md-3"></div>
+	</div>	
+   
+	<div class="row">	
+		<div class="col-md-4 lbl">Who loves you?</div>
+		<div class="col-md-8">
+			<div class="row">
+				<div class="col-md-5">
+						<input type="text" ng-model="newBeloved">
+				</div>
+				<div class="col-md-2">
+						<button class="btn" ng-click="addBeloved()">Add</button>
+				</div>
+				<div class="col-md-5">
+			</div>
+			<ul  ng-model="beloveds">
+				<li ng-repeat="beloved in beloveds">{{beloved.beloved}}</li>
+				<edit-in-place value="beloved.beloved"></edit-in-place>
+				<button type="button" class="close pull-right" aria-hidden="true" ng-click="deleteTodo($index)">&times;</button>
+			</ul>
+		</div>
+	</div>	
+
+ 	<div class="row">		
+		<div class="col-md-4 lbl">What are your likes?</div>
+		<div class="col-md-8">
+			<textarea class="area" rows="5" cols="30" wrap="off" ng-model="likes" placeholder="List somethings you like. (LIMIT 5)"  data-tip="Enter somethings you like"></textarea>
+		</div>
+	</div>
+ 	<div class="row">		
+		<div class="col-md-7"></div>
+		<div class="col-md-5">
+			<button class="btn">Save</button>
+		</div>
+	</div>
+</div>
+</form>

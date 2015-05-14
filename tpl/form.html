@@ -1,0 +1,51 @@
+<form id="form" ng-controller="CenterCtl" ng-submit="Submit()">
+<div class="container">
+	<input in="foreground-hid" type="hidden" value="" ng-model="foreground"/>
+	<input in="background-hid" type="hidden" value="" ng-model="background"/>
+ 
+	<div class="row">
+		<div class="col-md-4 lbl">Your name:</div> 		
+		<div class="col-md-8">
+			<input class="txt" type="text" id="name-txt" maxlength="36" ng-model="pname" placeholder="Name:"  data-tip="Enter your name first last.">
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-4 lbl">Describe yourself:</div>		
+		<div class="col-md-8">
+			<input class="txt" type="text" id="desc-txt" ng-model="desc" placeholder="Ever so briefy, describe your self"  data-tip="Ever so briefy, describe your self">
+		</div>		
+	</div>
+ 	
+	<div class="row">
+		<div class="col-md-4 lbl">Stay Duration:</div> 		
+		<div class="col-md-2">
+			<input class="date" data-provide="datepicker" type="text" id="from-txt" ng-model="from" placeholder="From"  data-tip="Hospital stay from" data-date-format="M dd, yyyy"/>
+		</div>
+		<div class="col-md-2">
+			<input class="date" data-provide="datepicker" type="text" id="to-txt" ng-model="to" placeholder="To"  data-tip="Hospital stay to" data-date-format="M dd, yyyy"/>
+		</div>
+		<div class="col-md-3"></div>
+	</div>	
+   
+	<div class="row">	
+		<div class="col-md-4 lbl">Who loves you?</div>
+		<div class="col-md-8">
+			<textarea class="area" rows="5" cols="30" wrap="off" ng-model="beloved" placeholder="List those who love you. (LIMIT 5)"  data-tip="Enter names of your beloved"></textarea>
+		</div>
+	</div>	
+
+ 	<div class="row">		
+		<div class="col-md-4 lbl">What are your likes?</div>
+		<div class="col-md-8">
+			<textarea class="area" rows="5" cols="30" wrap="off" ng-model="likes" placeholder="List somethings you like. (LIMIT 5)"  data-tip="Enter somethings you like"></textarea>
+		</div>
+	</div>
+ 	<div class="row">		
+		<div class="col-md-12">
+			<input class="btn">Save</input>
+		</div>
+	</div>
+ 
+</div>
+</form>
