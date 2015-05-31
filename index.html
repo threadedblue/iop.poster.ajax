@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="posterApp">
+<head>
+<meta charset="utf-8">
+<title>Poster</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" type="text/css" />
+<link rel="stylesheet/less" href="lib/angular-bootstrap-colorpicker/less/colorpicker.less" type="text/css" />
+<link rel="stylesheet/less" href="lib/bootstrap/less/normalize.less" type="text/css" />
+<link rel="stylesheet/less" href="css/poster.less" type="text/css" />
+<link
+	href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAB/CeX/fwnl/38J5f9/CeX/fwnl/38J5f9/CeX/fwnl/38J5f9/CeX/fwnl/38J5f9/CeX/fwnl/38J5f9/CeX/fwnl/38J5f9/CeX/fwnl/38J5cr+/v7//v7+//7+/v/+/v7/fwnlyn8J5f9/CeX/fwnl/38J5f9/CeX/fwnl/38J5f9/CeX/fwnl/38J5cr+/v7/fwnlyn8J5cp/CeXKfwnlyv7+/v9/CeXKfwnl/38J5f9/CeX/fwnl/38J5f9/CeX/fwnl/38J5cr+/v7/fwnlyn8J5f9/CeX/fwnl/38J5f9/CeXK/v7+/38J5cp/CeX/fwnl/38J5f9/CeX/fwnl/38J5f9/CeXK/v7+/38J5cp/CeX/fwnl/38J5f9/CeX/fwnlyv7+/v9/CeXKfwnl/38J5f9/CeX/fwnl/38J5f9/CeX/fwnlyv7+/v9/CeXKfwnl/38J5f9/CeX/fwnl/38J5f9/CeXK/v7+/38J5cp/CeX/fwnl/38J5f9/CeX/fwnl/38J5cr+/v7/fwnlyn8J5f9/CeX/fwnl/38J5f9/CeX/fwnlyv7+/v9/CeXKfwnl/38J5f9/CeX/fwnl/38J5f9/CeXK/v7+/38J5cp/CeX/fwnl/38J5f9/CeX/fwnl/38J5cr+/v7/fwnlyn8J5f9/CeX/fwnl/38J5f9/CeX/fwnlyv7+/v9/CeXKfwnl//7+/v9/CeXKfwnl/38J5f9/CeX/fwnl//7+/v9/CeXKfwnl/38J5f9/CeX/fwnl/38J5cr+/v7/fwnlyn8J5f/+/v7/fwnlyn8J5f9/CeX/fwnl/38J5cr+/v7/fwnlyn8J5f9/CeX/fwnl/38J5f9/CeX/fwnlyv7+/v9/CeX//v7+/38J5cp/CeXKfwnl/38J5f9/CeXK/v7+/38J5cp/CeX/fwnl/38J5f9/CeX/fwnl/38J5cr+/v7/fwnl/38J5cr+/v7/fwnlyn8J5f9/CeX/fwnlyv7+/v9/CeXKfwnl/38J5f9/CeX/fwnl/38J5f9/CeX/fwnl/38J5f9/CeXK/v7+/38J5cp/CeX/fwnl/38J5cr+/v7/fwnlyn8J5f9/CeX/fwnl/38J5f9/CeX/fwnl/38J5f9/CeX/fwnlyv7+/v9/CeXKfwnlyn8J5cr+/v7/fwnlyn8J5f9/CeX/fwnl/38J5f9/CeX/fwnl/38J5f9/CeX/fwnl/38J5f9/CeXK/v7+//7+/v/+/v7/fwnlyn8J5f9/CeX/fwnl/38J5f9/CeX/fwnl/38J5f9/CeX/fwnl/38J5f9/CeX/fwnl/38J5f9/CeX/fwnl/38J5f9/CeX/fwnl/38J5f9/CeX/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+	rel="icon" type="image/x-icon" />
+<script src="lib/angular/angular.js"></script>
+<script src="lib/angular-route/angular-route.js"></script>
+<script src="lib/jquery/dist/jquery.js"></script>
+<script src="lib/bootstrap/dist/js/bootstrap.js"></script>
+<script src="lib/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js"></script> 
+<script src="lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script src="lib/less/dist/less.js"></script> 
+<script src="lib/lodash/lodash.js"></script> 
+<script src="lib/restangular/dist/restangular.js"></script> 
+<script src="app.js"></script>
+</head>
+<body ng-controller="SetupCtl">
+	<div id="head" ng-include src="'tpl/head.html'"></div>
+	<div id="navbar" ng-include src="'tpl/navbar.html'"></div>
+	<div class="center" ng-view></div>
+</body>
+</html>

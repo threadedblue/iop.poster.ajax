@@ -1,0 +1,14 @@
+<div class="center-body">
+<h4>All Posters</h4>
+<div class="container">
+	<div class="row" ng-repeat="poster in posters">
+	  <input type="hidden" value={{poster.id}}></input>
+	  <div class="col-md-1"><button class="edit-btn" ng-click="EditOne(poster)">edit</button></div>
+	  <div class="col-md-1"><button class="delete-btn" ng-click="DeleteOne(poster)">delete</button></div>
+	  <div class="col-md-1"><button class="print-btn" ng-click="PrintOne(poster)">print</button></div>
+	  <div class="col-md-3">{{poster.email}}</div>
+	  <div class="col-md-2">{{poster.firstName}}</div>
+	  <div class="col-md-4">{{poster.lastName}}</div>
+	</div> <!-- row -->
+</div> <!--  container -->
+</div>

@@ -1,0 +1,81 @@
+<form id="setupFrm"  name="setupFrm" class="center-body" ng-controller="SetupCtl" ng-submit="PersistOne()" novalidate>
+  <input type="submit" class="btn" value="Save" ng-disabled="setupFrm.$invalid"/>
+
+<div class="container">
+	<div class="row">
+		<h5>Add some color:<h5>
+		<input in="color-hid" type="hidden" ng-model="poster.color"/>
+		<input in="background-hid" type="hidden" ng-model="poster.background"/>
+		<div id="halfheights" class="col-md-2">
+			<div>
+			<span>
+				<button colorpicker type="button" colorpicker-position="bottom" class="color-btn" ng-model="poster.color">Foreground</button>
+			</span>
+			</div>
+		</div>
+		<div id="color-pick" class="col-md-5" style="color: {{poster.color}}; background: {{poster.background}}">
+			<p>Foreground</p>
+		</div>
+		<div id="halfheights" class="col-md-2">
+			<div>
+			<span>
+				<button colorpicker type="button" colorpicker-position="bottom" class="color-btn" ng-model="poster.background">Background</button>
+			</span>
+			</div>
+		</div>
+		<div class="col-md-3"></div>
+	</div>
+</div>
+	<div class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.name.$pristine }">
+		<label for="email-txt">Your email</label>
+		<input id="email-txt" name="email-txt" class="form-control" type="email" class="txt" ng-model="poster.email" required/>
+  		<p ng-show="setupFrm.name.$invalid && !setupFrm.name.$pristine" class="help-block">Email required.</p>
+  		<p ng-show="ValidateEmail(email) && !setupFrm.name.$pristine" class="help-block">Invalid email syntax.</p>
+  		<p ng-show="IsEmailUsed(email) && !setupFrm.name.$pristine" class="help-block">Email is already in use.</p>
+	</div>
+  
+	<div class="form-group">
+		<label for="firstname-txt">First Name</label>
+		<input id="firstname-txt" class="form-control" type="text" ng-maxlength="36" placeholder="First Name:"  data-tip="Enter your name first name." ng-model="poster.firstName">
+	</div>
+
+	<div class="form-group">
+		<label for="lastname-txt">Last Name</label>
+		<input  id="lastname-txt" class="form-control" type="text" ng-maxlength="36" placeholder="Last Name:"  data-tip="Enter your name last name." ng-model="poster.lastName">
+	</div>
+	
+ 	<div class="form-group"> 
+		<label for="desc-txt">Describe yourself</label>
+		<textarea id="desc-txt" class="form-control" rows="5" ng-maxlength="142" placeholder="Ever so briefy, describe your self"  data-tip="Ever so briefy, describe your self." ng-model="poster.desc">
+		</textarea>
+	</div>
+	
+   	<div class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.name.$pristine }">
+		<label for="from-txt">Stay Duration</label>
+		<input id="from-txt" class="date" data-provide="datepicker" type="text" placeholder="From"  data-tip="Hospital stay from" data-date-format="M dd, yyyy" ng-model="poster.from"/>
+		<input id="to-txt" class="date" data-provide="datepicker" type="text" placeholder="To"  data-tip="Hospital stay to" data-date-format="M dd, yyyy" ng-model="poster.to"/>
+		<p ng-show="from > to" class="help-block">To date cannot be before from date.</p>
+		<p ng-show="from < currentDate" class="help-block">From date must be after today's date.</p>
+		</div>
+    
+ 	<div class="form-group">
+		<label for="beloveds">Who loves you?</label>
+		<ul id="beloveds" class="list-group" ng-model="poster.beloved">
+			<li class="list-group-item clearfix task" ng-repeat="beloved in PaddedArray(poster.beloved) track by $index">
+				<input class="form-control" type="text" value="{{beloved.beloved}}" maxlength="36" placeholder="Add a name" data-tip="Add a name">
+			</li>
+		</ul> 
+	</div>
+
+  	<div class="form-group">
+		<label for="likes">What are your likes?</label>
+		<ul id="likes" class="list-group" ng-model="poster.likes">
+			<li class="list-group-item clearfix task" ng-repeat="like in PaddedArray(poster.likes) track by $index">
+				<input class="form-control" type="text" ng-model="like.like" maxlength="36" placeholder="Add a like" data-tip="Add a like">
+			</li>
+		</ul>
+	</div>
+
+  <input type="submit" class="btn" value="Save" ng-disabled="setupFrm.$invalid"/>
+</form>
+
