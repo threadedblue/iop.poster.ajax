@@ -11,6 +11,10 @@ posterApp.config(['$routeProvider', function($routeProvider) {
 	     templateUrl: "tpl/listall.html",
 	     controller: "SetupCtl"
 	 }).	
+	 when('/print', {
+	     templateUrl: "tpl/pdf.html",
+	     controller: "SetupCtl"
+	 }).	 
 	 otherwise({redirectTo: function (routeParams, path, search) {
         console.log(routeParams);
         console.log(path);
@@ -37,8 +41,18 @@ posterApp.config(function(RestangularProvider) {
         }
         return elem;
     });
+//    RestangularProvider.addResponseInterceptor(function(data, operation, what, url, response, deferred) {
+//	    console.log("res Intercept==>");
+//	    console.log(data);
+//	    console.log(operation);
+//	    console.log(what);
+//	    console.log(url);
+//	    console.log(response);
+//	    console.log(deferred);
+//	    console.log("<==req Intercept");
+//	    return data;
+//	});
   });
-
 posterApp.controller("SetupCtl", ["$scope", "$location", '$route', "ListAllSvc", "FindByEmailSvc", "DeleteOneSvc", "PrintOneSvc", "PersistOneSvc", "Restangular",
                          function( $scope,   $location,   $route,   ListAllSvc,   FindByEmailSvc,   DeleteOneSvc,   PrintOneSvc,   PersistOneSvc,   Restangular) {
 	console.log("SetupCtl==>");
@@ -50,11 +64,7 @@ posterApp.controller("SetupCtl", ["$scope", "$location", '$route', "ListAllSvc",
 		$scope.posters = [];
 		$scope.actionResponse = undefined;
 		ListAllSvc.getList().then(function (new_posters) {
-			console.log("new")
-			console.log(new_posters);
 			Restangular.copy(new_posters, $scope.posters);
-			console.log("scope")
-			console.log($scope.posters);
 		});
 		console.log("<==ListAll");
 		$location.path("/listall");
@@ -82,12 +92,33 @@ posterApp.controller("SetupCtl", ["$scope", "$location", '$route', "ListAllSvc",
 		
 	$scope.PrintOne = function(poster) {
 		console.log("PrintOne==>");
-		$scope.$parent.poster = poster;
-		PersistOneSvc.post(poster);
-		PrintOneSvc.get(poster.id);
-		$location.path("/");
+		console.log(poster);
+//		$scope.$parent.poster = poster;
+//		PersistOneSvc.post(poster);
+		PrintOneSvc.get(poster.id).then(function (new_pdf) {
+			console.log("new_pdf");
+			$scope.print = {};
+			$scope.print.pdf = Restangular.copy(new_pdf);
+			console.log($scope.print.pdf);
+			$location.path("/print");
+		});
 	}
 
+//	var BASE64_MARKER = ';base64,';
+//
+//	function convertDataURIToBinary(dataURI) {
+//	  var base64Index = dataURI.indexOf(BASE64_MARKER) + BASE64_MARKER.length;
+//	  var base64 = dataURI.substring(base64Index);
+//	  var raw = window.atob(base64);
+//	  var rawLength = raw.length;
+//	  var array = new Uint8Array(new ArrayBuffer(rawLength));
+//
+//	  for(i = 0; i < rawLength; i++) {
+//	    array[i] = raw.charCodeAt(i);
+//	  }
+//	  return array;
+//	}
+	
 	$scope.PersistOne = function() {
 		console.log("PersistOne==>");
 		if ($scope.poster != undefined) {
@@ -113,12 +144,14 @@ posterApp.controller("SetupCtl", ["$scope", "$location", '$route', "ListAllSvc",
 		console.log("<==FindOneById");
 	}
 	
-	$scope.FindOneByEmail = function(email) {
-		console.log("FindOneByEmail==>");
-		$scope.isemailused = true;
-		FindByEmailSvc.one(email);
-		console.log("<==FindOneByEmail");
-	}
+//	$scope.FindOneByEmail = function(email) {
+//		console.log("FindOneByEmail==>");
+//		$scope.isemailused = true;
+//		FindByEmailSvc.get(email)).then(function (new_poster) {
+//			Restangular.copy(new_poster, $scope.poster);
+//		});
+//		console.log("<==FindOneByEmail");
+//	}
 	
 	$scope.validateEmail = function (email) {
 		var reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/

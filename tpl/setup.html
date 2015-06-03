@@ -1,6 +1,5 @@
-<form id="setupFrm"  name="setupFrm" class="center-body" ng-controller="SetupCtl" ng-submit="PersistOne()" novalidate>
+<form id="setupFrm"  name="setupFrm" class="center-body" ng-submit="PersistOne()" novalidate>
   <input type="submit" class="btn" value="Save" ng-disabled="setupFrm.$invalid"/>
-
 <div class="container">
 	<div class="row">
 		<h5>Add some color:<h5>
@@ -46,7 +45,7 @@
 	
  	<div class="form-group"> 
 		<label for="desc-txt">Describe yourself</label>
-		<textarea id="desc-txt" class="form-control" rows="5" ng-maxlength="142" placeholder="Ever so briefy, describe your self"  data-tip="Ever so briefy, describe your self." ng-model="poster.desc">
+		<textarea id="desc-txt" class="form-control" rows="5" ng-maxlength="142" placeholder="Ever so briefy, describe your self"  data-tip="Ever so briefy, describe your self." ng-model="poster.description">
 		</textarea>
 	</div>
 	

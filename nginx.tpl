@@ -1,0 +1,34 @@
+user  gcr staff;
+worker_processes  1;
+
+#error_log  logs/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+pid        /var/run/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+
+http {
+       log_format compression '$remote_addr - $remote_user [$time_local] '
+                           '"$request" $status $body_bytes_sent '
+                           '"$http_referer" "$http_user_agent" "$gzip_ratio"';
+   server {
+   # This won't work if URLs have an ending / .
+    	location /app/ {
+        	proxy_pass http://localhost:8080;
+        }
+        location / {
+        	# Without the following line, CSS won't work.
+        	include /usr/local/etc/nginx/mime.types;
+        	
+#            root   /Users/gcr/Documents/proquoWorkspace/iop.poster.ajax;
+            root   {{HTTP_ROOT}};
+            index  index.html;
+    	}
+    }
+}
